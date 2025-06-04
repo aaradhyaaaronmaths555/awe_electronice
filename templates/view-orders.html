@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}View All User Orders{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+    <h2 class="mb-3 mb-md-0">🧾 All User Orders</h2>
+    <a href="/admin-auth" class="btn btn-outline-secondary">← Back to Dashboard</a>
+  </div>
+
+  {% if orders %}
+    {% for order in orders %}
+      <div class="card shadow-sm mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white fw-bold">
+          <span>Order from: {{ order.name }} ({{ order.email }})</span>
+          <button class="btn btn-sm btn-danger" onclick="deleteOrder('{{ order.timestamp }}')">Delete</button>
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-4"><strong>Shipping Name:</strong> {{ order.shipping_name or 'N/A' }}</div>
+            <div class="col-md-5"><strong>Shipping Address:</strong> {{ order.shipping_address or 'N/A' }}</div>
+            <div class="col-md-3"><strong>Order Timestamp:</strong> {{ order.timestamp }}</div>
+          </div>
+          <p><strong>Total:</strong> ${{ '%.2f'|format(order.total) }}</p>
+
+          <h6>Items Ordered:</h6>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Product ID</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in order.cart %}
+                <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.quantity }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-center text-muted fst-italic">No orders found.</p>
+  {% endif %}
+</div>
+
+<script>
+  async function deleteOrder(timestamp) {
+    if (!confirm('Are you sure you want to delete this order?')) return;
+
+    try {
+      const res = await fetch(`/api/orders/delete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ timestamp })
+      });
+      const data = await res.json();
+      alert(data.message || data.error);
+      if (res.ok) {
+        location.reload();
+      }
+    } catch (err) {
+      alert('Failed to delete order.');
+    }
+  }
+</script>
+{% endblock %}

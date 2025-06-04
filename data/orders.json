@@ -1,0 +1,16 @@
+[
+  {
+    "email": "cr7@gmail.com",
+    "name": "Cristiano Ronaldo ",
+    "cart": [
+      {
+        "id": 2,
+        "quantity": 2
+      }
+    ],
+    "total": 244.0,
+    "shipping_name": "Cristiano ",
+    "shipping_address": "Al nassar",
+    "timestamp": "2025-06-04T16:06:48.562576"
+  }
+]

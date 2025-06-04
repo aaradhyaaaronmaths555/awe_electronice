@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="card shadow-lg p-5 text-center" style="max-width: 500px; width: 100%;">
+    <h2 class="mb-4">Welcome, Admin! 👋</h2>
+    <a href="/upload-page" class="btn btn-success w-100 mb-3">➕ Upload Products</a>
+    <a href="/view-orders" class="btn btn-primary w-100 mb-3">🧾 View All User Orders</a>
+    <a href="/admin-products" class="btn btn-secondary w-100">📦 View All Products</a>
+  </div>
+</div>
+{% endblock %}

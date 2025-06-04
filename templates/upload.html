@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Upload Product - AWE Electronics{% endblock %}
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow-lg p-4 w-100" style="max-width: 600px;">
+    <h2 class="mb-4 text-center">📦 Upload New Product</h2>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <div class="mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Product Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="number" name="price" class="form-control" placeholder="Price" step="0.01" required>
+      </div>
+      <div class="mb-3">
+        <input type="number" name="stock" class="form-control" placeholder="Stock Quantity" required>
+      </div>
+      <div class="mb-3">
+        <select name="category" class="form-select" required>
+          <option value="">Select Category</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Displays">Displays</option>
+          <option value="Audio">Audio</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <textarea name="description" class="form-control" placeholder="Product Description..." rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <input type="file" name="image" class="form-control" accept="image/*" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Upload Product</button>
+    </form>
+
+    <div class="d-flex justify-content-between mt-4">
+      <a href="/products-page" class="btn btn-outline-secondary">← View Products</a>
+      <a href="/admin-auth" class="btn btn-dark">🔙 Back to Admin Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('uploadForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('/api/products', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await res.json();
+      alert(result.message || result.error);
+
+      if (res.ok) {
+        window.location.href = '/products-page';
+      }
+    } catch (err) {
+      alert("Upload failed.");
+    }
+  });
+</script>
+
+{% endblock %}

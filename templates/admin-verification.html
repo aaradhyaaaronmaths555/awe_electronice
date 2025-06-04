@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Admin Verification{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 420px;">
+    <h2 class="text-center mb-3">Admin Code Verification</h2>
+    <p class="text-center text-muted mb-4">Special code is <strong>admin-admin</strong></p>
+
+    {% if error %}
+      <div class="alert alert-danger text-center">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+      <div class="mb-3">
+        <input type="text" name="code" class="form-control" placeholder="Enter admin code" required>
+      </div>
+      <button type="submit" class="btn btn-dark w-100">Enter</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

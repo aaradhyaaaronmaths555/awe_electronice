@@ -1,0 +1,37 @@
+[
+  {
+    "id": 2,
+    "name": "Mouse",
+    "price": 122.0,
+    "stock": 3,
+    "category": "Mouse with no tail",
+    "image": "/static/images/mouse.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Monitor",
+    "price": 345.0,
+    "stock": 122,
+    "category": "Displays",
+    "description": "Cute monitor",
+    "image": "/static/images/monitor.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Monitor Desk",
+    "price": 785.0,
+    "stock": 15,
+    "category": "Furniture",
+    "description": "Transform your workspace with a premium monitor desk that combines ergonomic comfort, sleek cable management, and rock-solid stability to boost your productivity and create the ultimate modern office setup.",
+    "image": "/static/images/desk.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Audio Interface",
+    "price": 123.0,
+    "stock": 145,
+    "category": "Audio",
+    "description": "Audio Interface USB Audio Interface with Mic Preamplifier USB Audio Mixer Recorder with 48V Phantom Power, 24 Bit, Support Tablet, Computers and Other Equipment Recording \uff08NO DAW Software included\uff09",
+    "image": "/static/images/audio-interface.jpg"
+  }
+]

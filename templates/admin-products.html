@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Admin Products{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-center flex-grow-1">📦 All Products</h2>
+    <a href="/admin-auth" class="btn btn-outline-secondary ms-3">← Back to Dashboard</a>
+  </div>
+
+  <div id="productList" class="row gy-4"></div>
+</div>
+
+<script>
+async function loadProducts() {
+  const res = await fetch('/api/products');
+  const products = await res.json();
+
+  const listDiv = document.getElementById('productList');
+  listDiv.innerHTML = '';
+
+  products.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'col-12';
+    card.innerHTML = `
+      <div class="card shadow-sm">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="${product.image}" class="img-fluid rounded-start h-100 object-fit-cover" alt="${product.name}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${product.name}</h5>
+              <p class="card-text">Price: <strong>$${product.price.toFixed(2)}</strong></p>
+              <p class="card-text">Stock: 
+                <input type="number" value="${product.stock}" min="0" id="stock-${product.id}" style="width:80px" class="form-control d-inline-block ms-2">
+              </p>
+              <p class="card-text">Category: ${product.category}</p>
+              <p class="card-text text-muted">${product.description}</p>
+              <button class="btn btn-primary me-2" onclick="updateProduct(${product.id})">Update</button>
+              <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    listDiv.appendChild(card);
+  });
+}
+
+async function updateProduct(id) {
+  const stockInput = document.getElementById(`stock-${id}`);
+  const newStock = parseInt(stockInput.value);
+  if (isNaN(newStock) || newStock < 0) return alert('Invalid stock value');
+
+  const res = await fetch(`/api/products/update/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ stock: newStock })
+  });
+
+  const result = await res.json();
+  alert(result.message || result.error);
+  loadProducts();
+}
+
+async function deleteProduct(id) {
+  if (!confirm('Are you sure you want to delete this product?')) return;
+  const res = await fetch(`/api/products/delete/${id}`, { method: 'DELETE' });
+  const result = await res.json();
+  alert(result.message || result.error);
+  loadProducts();
+}
+
+loadProducts();
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Profile - AWE Electronics{% endblock %}
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+  {% if not session.get('user') %}
+    <div class="alert alert-warning text-center shadow-sm w-100" style="max-width: 500px;">
+      🚨 You must <a href="/login-page" class="alert-link">login</a> or <a href="/register-page" class="alert-link">register</a> to view your profile.
+    </div>
+  {% else %}
+    <div class="card shadow p-4 text-center w-100" style="max-width: 500px;">
+      <h2 class="mb-3">👤 Welcome, {{ session.get('name', 'User') }}</h2>
+      <p class="lead text-muted mb-1">📧 {{ session.get('user') }}</p>
+      <p class="text-secondary">🛡️ Role: {{ session.get('role', 'user') }}</p>
+      <a href="/logout" class="btn btn-outline-danger mt-3 w-100">🚪 Logout</a>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

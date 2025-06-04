@@ -1,0 +1,50 @@
+[
+    {
+        "id": "b08f4d7d-357e-4dcf-acb6-cde456c8fbe3",
+        "name": "Captain",
+        "email": "captain@awe.com",
+        "password": "43f8a2ad1882637f749ce419d33a02f74debb66991d7d65aade4eea9ded2a120"
+    },
+    {
+        "id": "167146ea-c065-4399-b88b-b00c8e800dbe",
+        "name": "lamsal",
+        "email": "aaradhyalamsal2002@gmail.com",
+        "password": "ef33238acf277321cf2751951d0f8c4a077bec9c358b99ded33c4c37fcfec2cf"
+    },
+    {
+        "id": "22d6aecd-340b-4ff0-ad03-31db961715a1",
+        "name": "Aditya ",
+        "email": "adityajain@gmail.com",
+        "password": "882faefe28371f8145b880c83c83bc7dd497e251eb6686af30e509a75f35ba44"
+    },
+    {
+        "id": "ebc9a3c8-84e2-45cc-9b37-3652d2f03f97",
+        "name": "Purna",
+        "email": "purna@gmail.com",
+        "password": "86c8005f1008b28247824187524bae2988a7ec332014f979cf688f7f4dd855e0"
+    },
+    {
+        "id": "43de2ab0-ed1a-4a2a-bac4-ed59df7306c5",
+        "name": "farhan",
+        "email": "farhna@gmail.com",
+        "password": "b69e7371d5629124466f0b92f34d7fee161f30563962e4155ae8e6a5577c01bf"
+    },
+    {
+        "id": "764f1465-a128-4d98-bb3a-2c4119f27170",
+        "name": "Moonstone Acharya",
+        "email": "moonstone@gmail.com",
+        "password": "9bd2b91c240fe22169543e99d0bdeabc98ba1e0bb75fef0a59dc955403e3f40f"
+    },
+    {
+        "id": "d0fc51d5-86c1-4298-8381-74f0441a8bd9",
+        "name": "Kabir",
+        "email": "kabir@gmail.com",
+        "password": "f8628a3fffd6b87bd309b2873b7aaa5bf9df0e3c18c383b07c37554449d91fdb"
+    },
+    {
+        "id": "4e684bfa-9805-43c6-911d-cc7ecdd080f9",
+        "name": "Cristiano Ronaldo ",
+        "email": "cr7@gmail.com",
+        "password": "6636b31811ee0bbf593d11526ceb655267fe96d8daa4a164929664426952c348"
+    }
+]
