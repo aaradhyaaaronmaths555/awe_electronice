@@ -33,5 +33,14 @@
     "category": "Audio",
     "description": "Audio Interface USB Audio Interface with Mic Preamplifier USB Audio Mixer Recorder with 48V Phantom Power, 24 Bit, Support Tablet, Computers and Other Equipment Recording \uff08NO DAW Software included\uff09",
     "image": "/static/images/audio-interface.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Mobile Phone",
+    "price": 700.0,
+    "stock": 22,
+    "category": "Displays",
+    "description": "Iphone 44",
+    "image": "/static/images/mobile.jpg"
   }
 ]
